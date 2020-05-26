@@ -34,6 +34,10 @@ you need to build your own nerd font
 	```cmd
 	fontforge -script patch.py otf\\FiraCode-Bold.oft -c -w
 	```
+	or
+	```cmd
+	fontforge -script patch.py otf -c -w -out otf_out
+	```
 
 
 
