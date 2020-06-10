@@ -32,7 +32,7 @@ you need to build your own nerd font
 	```
 	For example
 	```cmd
-	fontforge -script patch.py otf\\FiraCode-Bold.oft -c -w
+	fontforge -script patch.py otf\\FiraCode-Bold.otf -c -w
 	```
 	or
 	```cmd

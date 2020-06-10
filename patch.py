@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding=utf8
 # Nerd Fonts Version: 2.1.0
-# script version: FH_3.1
+# script version: FH_3.2
 
 VERSION = "2.1.0"
 PROJECT_NAME = "Nerd Fonts"
@@ -41,8 +41,13 @@ class FontPatcher:
 		self.args = args # class 'argparse.Namespace'
 		self.symFontArgs = symFontArgs
 		self.sourceFont = None # class 'fontforge.font'
+		# For compatibility with the rest of nerdfonts we dont want to keep the
+		# encoding positions for the following
 		self.octiconsExactEncodingPosition = True
 		self.fontlinuxExactEncodingPosition = True
+		if args.compat:
+			self.octiconsExactEncodingPosition = False
+			self.fontlinuxExactEncodingPosition = False
 		self.patchSet = None # class 'list'
 		self.fontDim = None # class 'dict'
 		self.onlybitmaps = 0
@@ -125,7 +130,7 @@ class FontPatcher:
 			additionalFontNameSuffix = " " + PROJECT_NAME_ABBR
 		else:
 			additionalFontNameSuffix = verboseAdditionalFontNameSuffix
-		if not self.args.complete:
+		if not self.args.complete and not self.args.compat:
 			# NOTE not all symbol fonts have appended their suffix here
 			if self.args.fontawesome:
 				additionalFontNameSuffix += " A"
@@ -907,6 +912,8 @@ def setupArgumentsAndRun():
 	'(for Windows compatibility)')
 	parser.add_argument('-c', '--complete', dest='complete', default=False,
 	action='store_true', help='Add all available Glyphs')
+	parser.add_argument('--compat', dest='compat', default=False,
+	action='store_true', help='Force compatibility with nerd font complete sets')
 	parser.add_argument('--careful', dest='careful', default=False,
 	action='store_true', help='Do not overwrite existing glyphs if detected')
 	parser.add_argument('--removeligs', '--removeligatures',
