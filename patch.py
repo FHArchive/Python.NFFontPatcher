@@ -505,7 +505,8 @@ class FontPatcher:
 		'ScaleGlyph': octiScaleList, 'Attributes': symAttrDefault}, # Zap
 		{'Enabled': self.args.octicons, 'Name': "Octicons",
 		'Filename': "octicons.ttf", 'Exact': self.octiconsExactEncodingPosition,
-		'SymStart': 0xF27C, 'SymEnd': 0xF27C, 'SrcStart': 0xF4A9, 'SrcEnd': 0xF4A9,
+		#'SymStart': 0xF27C, 'SymEnd': 0xF27C, 'SrcStart': 0xF4A9, 'SrcEnd': 0xF4A9,
+		'SymStart': 0xF27C, 'SymEnd': 0xF2BD, 'SrcStart': 0xF4A9, 'SrcEnd': 0xF4EA,
 		'ScaleGlyph': octiScaleList, 'Attributes': symAttrDefault}, # Desktop
 		{'Enabled': self.args.custom, 'Name': "Custom",
 		'Filename': self.args.custom, 'Exact': True,
